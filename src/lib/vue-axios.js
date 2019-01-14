@@ -24,8 +24,8 @@ axios.interceptors.request.use(config => {
 })
 
 axios.interceptors.response.use(response => {
-	console.log("aa")
-	console.log(response);
+	// console.log("aa")
+	// console.log(response);
 	Message.success(response.data.meta.msg);
 	return response;
 }, err => {

@@ -58,12 +58,12 @@ export default {
                // 有输入后，提交并获取数据
                this.$axios.post("login", this.ruleForm)
                .then(res => {
-                console.log(res);
-                console.log(res.data.meta.status)
+                // console.log(res);
+                // console.log(res.data.meta.status)
                 if (res.data.meta.status === 400){
-                  this.$message.error(res.data.meta.msg);
+                  // this.$message.error(res.data.meta.msg);
                 }else if (res.data.meta.status == 200) {
-                  this.$message.success(res.data.meta.msg);
+                  // this.$message.success(res.data.meta.msg);
                   window.sessionStorage.setItem("token", res.data.data.token);
 
                   // 编程式导航
@@ -73,7 +73,7 @@ export default {
              } else {
                // console.log('error submit!!');
                // 如果没有填写内容，则提示
-               this.$message.error('请输入用户名和密码');
+               // this.$message.error('请输入用户名和密码');
                return false;
              }
            });

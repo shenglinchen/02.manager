@@ -17,6 +17,11 @@ Vue.use(ElementUI);
 // 导入初始化css
 import "./assets/base.css";
 
+// 导入组件
+import myBreadcrumb from "./components/myBreadcrumb.vue";
+
+Vue.component("myBreadcrumb", myBreadcrumb);
+
 new Vue({
   el: '#app',
   render: h => h(App),

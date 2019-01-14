@@ -8,12 +8,20 @@ Vue.use(VueRouter);
 // 导入模块
 import index from "../components/index.vue";
 import login from "../components/login.vue";
+import users from "../components/users.vue";
 
 // 定义路由
 const routes = [
 	{
 		path: "/",
-		component: index
+		component: index,
+		children: [
+			{
+				path: "users",
+				component: users
+			}	
+
+		]
 	},
 	{
 		path: "/login",

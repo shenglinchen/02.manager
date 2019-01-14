@@ -1,5 +1,6 @@
 <template>
 	<div class="index-container">
+		<!-- <myBreadcrumb level2="第一季" level3="第二季"></myBreadcrumb> -->
 		<el-container class="all-container">
 			<el-header>
 				<el-row>
@@ -43,7 +44,9 @@
 
 					</el-menu>
 				</el-aside>
-				<el-main></el-main>
+				<el-main>
+					<router-view></router-view>
+				</el-main>
 			</el-container>
 		</el-container>
 	</div>
@@ -165,8 +168,6 @@
 			.el-main {
 			  background-color: #E9EEF3;
 			  color: #333;
-			  text-align: center;
-			  line-height: 160px;
 			}
 			
 		}
