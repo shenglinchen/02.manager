@@ -19,23 +19,22 @@
 					<el-menu
 					  default-active="2"
 					  class="el-menu-vertical-demo"
-					  @open="handleOpen"
-					  @close="handleClose"
 					  background-color="#545c64"
 					  text-color="#fff"
-					  active-text-color="#ffd04b">
+					  active-text-color="#ffd04b"
+					  router>
 					  <!-- 通过key来分辨点击的时哪一个，进而展开 -->
-					  	<el-submenu :index="item.id" v-for="(item, index) in menuList">
-					    	<template slot="title">
+					  	<el-submenu :index="item.order + ''" v-for="(item, index) in menuList" :key="item.id">
+					    	<template slot="title" class="el-submenu-title">
 					    	  	<i class="el-icon-location"></i>
 					    	  	<span>
 					    	  		{{item.authName}}
 					    	  	</span>
 					    	</template>
 					    	<el-menu-item-group>
-					    	  	<el-menu-item index="1-1">
+					    	  	<el-menu-item v-for="(it, index) in item.children" :index="it.path">
 									<i class="el-icon-menu"></i>
-					    	  		{{item.children[0].authName}}
+					    	  		{{it.authName}}
 					  		  	</el-menu-item>
 	
 					    	</el-menu-item-group>
@@ -93,20 +92,22 @@
 
 		beforeCreate() {
 			this.$axios.get("menus", {
-				headers: {
-					"Authorization": window.sessionStorage.getItem("token"),
-				}
+				// headers: {
+				// 	"Authorization": window.sessionStorage.getItem("token"),
+				// }
 			})
 			.then(res => {
-				console.log(res);
+				// console.log(res);
 				this.menuList = res.data.data;
-				console.log(this.menuList)
+				// console.log(this.menuList)
 			})
 		}
 	}
 </script>
 
-<style lang="scss" scoped>
+<!-- 为什么要去掉scoped -->
+<style lang="scss">
+// <style lang="scss" scoped>
 	.index-container {
 		height: 100%;
 		.all-container {
@@ -137,6 +138,10 @@
 				.el-aside {
 					.el-menu {
 						border: 0;
+
+					}
+					.el-submenu__title {
+						text-align: left;
 					}
 				}
 				.el-main {
@@ -166,4 +171,6 @@
 			
 		}
 	}
+
+
 </style>
