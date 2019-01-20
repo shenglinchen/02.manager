@@ -9,6 +9,12 @@ import axios from "./lib/vue-axios.js";
 // 导入路由
 import router from "./lib/vue-router.js";
 
+// 导入moment
+import moment from "moment";
+Vue.filter("beautifyTime", value => {
+	return moment(value).format("YYYY-MM-DD hh:mm:ss");
+})
+
 // 暴露axios
 Vue.use(axios);
 
